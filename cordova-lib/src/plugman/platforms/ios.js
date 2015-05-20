@@ -206,7 +206,7 @@ module.exports = {
                   if (!fs.existsSync(config_file)) 
                     return false; 
 
-                // only return project that contains both a plist and a config.xml (especially to discard apple watch projects)
+                // only return project that contains both a plist and a config.xml (especially to discard apple watch extension/app)
                 plist_file_index = index;
                 return true;
               }
@@ -217,7 +217,6 @@ module.exports = {
 
         if (!plist_file_entry)
             throw new CordovaError('could not find -Info.plist file, or config.xml file.');
-
       
         var target;
 
@@ -262,8 +261,8 @@ module.exports = {
        
        }
 
-
         var plist_file = path.join(project_dir, plist_file_entry.buildSettings.INFOPLIST_FILE.replace(/^"(.*)"$/g, '$1').replace(/\\&/g, '&'));
+
         var xcode_dir = path.dirname(plist_file);
         var pluginsDir = path.resolve(xcode_dir, 'Plugins');
         var resourcesDir = path.resolve(xcode_dir, 'Resources');
