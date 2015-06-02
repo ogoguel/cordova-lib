@@ -196,7 +196,7 @@ module.exports = {
         // CB-9033
         var plist_file_index;
         var plist_file_entry = _.find(xcBuildConfiguration, function (entry,index) { 
-            if (entry.buildSettings && entry.buildSettings.INFOPLIST_FILE) { 
+            if (entry.buildSettings && entry.buildSettings.INFOPLIST_FILE && entry.buildSettings.SKIP_INSTALL != 'YES') { 
 
                 var plist_file = path.join(project_dir, entry.buildSettings.INFOPLIST_FILE.replace(/^"(.*)"$/g, '$1').replace(/\\&/g, '&'));
                  if (!fs.existsSync(plist_file)) 
@@ -206,7 +206,7 @@ module.exports = {
                   if (!fs.existsSync(config_file)) 
                     return false; 
 
-                // only return project that contains both a plist and a config.xml (especially to discard apple watch extension/app)
+                // only return project that contains both a plist and a config.xml and does not have the skip install flag
                 plist_file_index = index;
                 return true;
               }
