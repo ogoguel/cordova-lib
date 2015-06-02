@@ -42,7 +42,7 @@
     "underscore": "1.7.0",
     "unorm": "1.3.3",
     "valid-identifier": "0.0.1",
-    "xcode": "https://github.com/ogoguel/node-xcode/tarball/17926117b388d08f05ec2db1e1ad8262f67a2a8d"
+    "xcode": "0.7.0"
   },
   "devDependencies": {
     "istanbul": "^0.3.4",
